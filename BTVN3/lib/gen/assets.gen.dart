@@ -14,8 +14,22 @@ import 'package:flutter/services.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/ic_arrow.svg
+  SvgGenImage get icArrow => const SvgGenImage('assets/images/ic_arrow.svg');
+
+  /// File path: assets/images/ic_back.svg
+  SvgGenImage get icBack => const SvgGenImage('assets/images/ic_back.svg');
+
+  /// File path: assets/images/ic_breakfast.png
+  AssetGenImage get icBreakfast =>
+      const AssetGenImage('assets/images/ic_breakfast.png');
+
   /// File path: assets/images/ic_chat.svg
   SvgGenImage get icChat => const SvgGenImage('assets/images/ic_chat.svg');
+
+  /// File path: assets/images/ic_distance.png
+  AssetGenImage get icDistance =>
+      const AssetGenImage('assets/images/ic_distance.png');
 
   /// File path: assets/images/ic_dropdown.svg
   SvgGenImage get icDropdown =>
@@ -23,6 +37,10 @@ class $AssetsImagesGen {
 
   /// File path: assets/images/ic_edit.svg
   SvgGenImage get icEdit => const SvgGenImage('assets/images/ic_edit.svg');
+
+  /// File path: assets/images/ic_ensurance.png
+  AssetGenImage get icEnsurance =>
+      const AssetGenImage('assets/images/ic_ensurance.png');
 
   /// File path: assets/images/ic_food.svg
   SvgGenImage get icFood => const SvgGenImage('assets/images/ic_food.svg');
@@ -89,6 +107,10 @@ class $AssetsImagesGen {
   AssetGenImage get icPerson4 =>
       const AssetGenImage('assets/images/ic_person_4.png');
 
+  /// File path: assets/images/ic_price.png
+  AssetGenImage get icPrice =>
+      const AssetGenImage('assets/images/ic_price.png');
+
   /// File path: assets/images/ic_profile_photo.svg
   SvgGenImage get icProfilePhoto =>
       const SvgGenImage('assets/images/ic_profile_photo.svg');
@@ -135,9 +157,14 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<dynamic> get values => [
+        icArrow,
+        icBack,
+        icBreakfast,
         icChat,
+        icDistance,
         icDropdown,
         icEdit,
+        icEnsurance,
         icFood,
         icHeart,
         icLiked,
@@ -156,6 +183,7 @@ class $AssetsImagesGen {
         icPerson2,
         icPerson3,
         icPerson4,
+        icPrice,
         icProfilePhoto,
         icRate,
         icRead,

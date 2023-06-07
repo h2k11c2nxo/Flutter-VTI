@@ -1,11 +1,8 @@
-import 'dart:ui';
-
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:first_app/app_router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../app_router/app_router.dart';
 import '../data/category.dart';
 import '../data/popular.dart';
 import '../gen/assets.gen.dart';
@@ -132,7 +129,7 @@ class TravelBlogPage extends StatelessWidget {
               const SizedBox(
                 height: 28,
               ),
-              _buildPopular(),
+              _buildPopular(context),
             ],
           ),
         ),
@@ -183,76 +180,85 @@ class TravelBlogPage extends StatelessWidget {
     );
   }
 
-  Widget _buildPopular() {
+  Widget _buildPopular(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: List.generate(
-          listCategory.length,
+          listPopular.length,
           (index) {
-            return Padding(
-              padding: const EdgeInsets.only(right: 12),
-              child: Container(
-                height: 280,
-                width: 212,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(28),
-                ),
-                child: Stack(
-                  children: [
-                    Image.asset(Assets.images.icSalavatYulaev.path),
-                    Container(
-                      alignment: Alignment.topRight,
-                      padding: EdgeInsets.only(right: 16, top: 16),
-                      child: SvgPicture.asset(Assets.images.icLiked.path),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 24, top: 183),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Monument to Salavat Yulaev ',
-                            softWrap: true,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Container(
-                            height: 23,
-                            width: 53,
-                            decoration: BoxDecoration(
-                              color: Color.fromRGBO(255, 255, 255, 0.1),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              children: [
-                                SizedBox(
-                                  width: 7,
-                                ),
-                                SvgPicture.asset(
-                                  Assets.images.icRate.path,
-                                ),
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  '4.9',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 13,
-                                    color: Color.fromRGBO(255, 255, 255, 1),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          )
-                        ],
+            return InkWell(
+              onTap: () {
+                context.router.push(DetailTravelRoute());
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: Container(
+                  height: 280,
+                  width: 212,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(28),
+                  ),
+                  child: Stack(
+                    children: [
+                      Image.asset(listPopular[index].imageUrl),
+                      Container(
+                        alignment: Alignment.topRight,
+                        padding: const EdgeInsets.only(right: 16, top: 16),
+                        child: SvgPicture.asset(listPopular[index].iconUrl),
                       ),
-                    )
-                  ],
+                      Positioned(
+                        left: 24,
+                        bottom: 28,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              listPopular[index].title,
+                              softWrap: true,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            Container(
+                              height: 23,
+                              width: 53,
+                              decoration: BoxDecoration(
+                                color: const Color.fromRGBO(255, 255, 255, 0.1),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Row(
+                                children: [
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  SvgPicture.asset(
+                                    Assets.images.icRate.path,
+                                  ),
+                                  const SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    '${listPopular[index].voteCount}',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 13,
+                                      color: Color.fromRGBO(255, 255, 255, 1),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             );

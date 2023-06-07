@@ -29,6 +29,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const SettingPage(),
       );
     },
+    MessageRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MessagePage(),
+      );
+    },
     TravelBlogRoute.name: (routeData) {
       final args = routeData.argsAs<TravelBlogRouteArgs>(
           orElse: () => const TravelBlogRouteArgs());
@@ -37,16 +43,18 @@ abstract class _$AppRouter extends RootStackRouter {
         child: TravelBlogPage(key: args.key),
       );
     },
+    DetailTravelRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailTravelRouteArgs>(
+          orElse: () => const DetailTravelRouteArgs());
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: DetailTravelPage(key: args.key),
+      );
+    },
     VoteRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const VotePage(),
-      );
-    },
-    MessageRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const MessagePage(),
       );
     },
   };
@@ -95,6 +103,20 @@ class SettingRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [MessagePage]
+class MessageRoute extends PageRouteInfo<void> {
+  const MessageRoute({List<PageRouteInfo>? children})
+      : super(
+          MessageRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MessageRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [TravelBlogPage]
 class TravelBlogRoute extends PageRouteInfo<TravelBlogRouteArgs> {
   TravelBlogRoute({
@@ -124,6 +146,35 @@ class TravelBlogRouteArgs {
 }
 
 /// generated route for
+/// [DetailTravelPage]
+class DetailTravelRoute extends PageRouteInfo<DetailTravelRouteArgs> {
+  DetailTravelRoute({
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+          DetailTravelRoute.name,
+          args: DetailTravelRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'DetailTravelRoute';
+
+  static const PageInfo<DetailTravelRouteArgs> page =
+      PageInfo<DetailTravelRouteArgs>(name);
+}
+
+class DetailTravelRouteArgs {
+  const DetailTravelRouteArgs({this.key});
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'DetailTravelRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
 /// [VotePage]
 class VoteRoute extends PageRouteInfo<void> {
   const VoteRoute({List<PageRouteInfo>? children})
@@ -133,20 +184,6 @@ class VoteRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'VoteRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [MessagePage]
-class MessageRoute extends PageRouteInfo<void> {
-  const MessageRoute({List<PageRouteInfo>? children})
-      : super(
-          MessageRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'MessageRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
